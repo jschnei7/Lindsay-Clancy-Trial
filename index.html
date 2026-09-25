@@ -3,202 +3,831 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>When Facts Aren't Enough: The Lindsay Clancy Mistrial</title>
+<title>We Agree on the Facts, So Why Couldn't the Lindsay Clancy Jury Agree on the Truth?</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=IBM+Plex+Mono:wght@400;500;600&family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --paper:#F1EEE6; --paper-deep:#E7E1D2; --ink:#1C1B19; --ink-soft:#57544A;
-    --rule:#D3CCB9; --accent:#6E2B33;
-    font-family:'Spectral',Georgia,serif;
+  :root {
+    --paper: #F6F4EE;
+    --paper-surface: #EDE9DF;
+    --paper-card: #E4DEC8;
+    --ink: #181715;
+    --ink-muted: #5E5B53;
+    --ink-faint: #8C887E;
+    --rule: #D5CEC2;
+    --rule-dark: #181715;
+    --accent: #7A2828;
+    --accent-soft: rgba(122, 40, 40, 0.08);
+    --font-serif: 'Spectral', Georgia, serif;
+    --font-heading: 'Fraunces', serif;
+    --font-display: 'Cinzel', serif;
+    --font-mono: 'IBM Plex Mono', Menlo, Consolas, monospace;
   }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      --paper:#17171A; --paper-deep:#1E1E22; --ink:#E7E3D6; --ink-soft:#A29D8D;
-      --rule:#312F29; --accent:#B85D66;
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #131315;
+      --paper-surface: #1B1B1E;
+      --paper-card: #242428;
+      --ink: #EAE6DC;
+      --ink-muted: #A09B8E;
+      --ink-faint: #6A675F;
+      --rule: #2C2B30;
+      --rule-dark: #EAE6DC;
+      --accent: #B24E4E;
+      --accent-soft: rgba(178, 78, 78, 0.12);
     }
   }
-  :root[data-theme="dark"]{
-    --paper:#17171A; --paper-deep:#1E1E22; --ink:#E7E3D6; --ink-soft:#A29D8D;
-    --rule:#312F29; --accent:#B85D66;
-  }
-  *{box-sizing:border-box;}
-  html{scroll-padding-top:env(safe-area-inset-top,0px);}
-  body{
-    margin:0; background:var(--paper); color:var(--ink);
-    font-size:20px; line-height:1.7;
-    padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
-    -webkit-font-smoothing:antialiased;
-  }
-  #bar{position:fixed; top:env(safe-area-inset-top,0px); left:0; height:2px; background:var(--accent); width:0%; z-index:10;}
 
-  header{
-    display:flex; justify-content:space-between; align-items:baseline;
-    padding:1.1rem 1.5rem; border-bottom:1px solid var(--rule);
-    position:sticky; top:env(safe-area-inset-top,0px); background:var(--paper); z-index:5;
-  }
-  .logo{font-family:'Fraunces',serif; font-weight:600; font-size:1.05rem; letter-spacing:0.01em;}
-  .logo em{font-style:italic; font-weight:400; color:var(--ink-soft);}
-  #theme-btn{
-    background:none; border:1px solid var(--rule); color:var(--ink-soft);
-    font-family:'Spectral',serif; font-size:0.82rem; padding:0.3rem 0.7rem;
-    cursor:pointer; border-radius:2px;
-  }
-  #theme-btn:hover{border-color:var(--ink-soft); color:var(--ink);}
-
-  main{max-width:660px; margin:0 auto; padding:3.5rem 1.5rem 5rem;}
-  .section-label{font-style:italic; color:var(--ink-soft); font-size:0.95rem; margin-bottom:0.9rem;}
-  h1{
-    font-family:'Fraunces',serif; font-weight:500; font-size:clamp(2rem,5vw,2.9rem);
-    line-height:1.18; letter-spacing:-0.01em; margin:0 0 1.1rem;
-  }
-  .dek{font-style:italic; color:var(--ink-soft); font-size:1.15rem; line-height:1.55; margin-bottom:1.6rem;}
-  .byline{
-    font-size:0.92rem; color:var(--ink-soft); border-top:1px solid var(--rule);
-    padding-top:0.9rem; margin-bottom:3rem;
+  :root[data-theme="dark"] {
+    --paper: #131315;
+    --paper-surface: #1B1B1E;
+    --paper-card: #242428;
+    --ink: #EAE6DC;
+    --ink-muted: #A09B8E;
+    --ink-faint: #6A675F;
+    --rule: #2C2B30;
+    --rule-dark: #EAE6DC;
+    --accent: #B24E4E;
+    --accent-soft: rgba(178, 78, 78, 0.12);
   }
 
-  article p{margin:0 0 1.5rem;}
-  article p.lede::first-letter{
-    font-family:'Fraunces',serif; font-weight:500; font-size:3.6rem; line-height:0.75;
-    float:left; padding:0.1rem 0.5rem 0 0; color:var(--ink);
-  }
-  article h2{
-    font-family:'Fraunces',serif; font-weight:500; font-size:1.55rem;
-    margin:3rem 0 1.1rem; line-height:1.3;
-  }
-  article sup a{color:var(--accent); text-decoration:none; font-size:0.75em;}
-  article sup a:hover{text-decoration:underline;}
+  * { box-sizing: border-box; margin: 0; padding: 0; }
 
-  blockquote{
-    margin:2.4rem 0; padding-left:1.4rem; border-left:2px solid var(--accent);
-    font-style:italic; font-size:1.12rem; color:var(--ink); line-height:1.55;
+  html {
+    scroll-behavior: auto; /* avoids smooth animation jerking down during initial load */
   }
 
-  .exhibit{margin:3rem 0; padding:1.7rem 0; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);}
-  .exhibit h3{font-family:'Fraunces',serif; font-weight:500; font-size:1.15rem; margin:0 0 1.2rem; font-style:italic;}
-  .evidence{display:grid; grid-template-columns:1fr 1fr; gap:2rem;}
-  .evidence h4{font-size:0.88rem; text-transform:none; letter-spacing:0.01em; color:var(--ink-soft); font-weight:600; margin:0 0 0.7rem; border-bottom:1px solid var(--rule); padding-bottom:0.4rem;}
-  .evidence dl{margin:0;}
-  .evidence dt{font-size:0.85rem; color:var(--accent); font-style:italic; margin-top:0.85rem;}
-  .evidence dd{margin:0.15rem 0 0; font-size:0.95rem; line-height:1.5;}
-  @media (max-width:600px){.evidence{grid-template-columns:1fr; gap:1.6rem;}}
-
-  .jury{margin:3rem 0; padding:1.8rem 0; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);}
-  .jury h3{font-family:'Fraunces',serif; font-weight:500; font-size:1.15rem; margin:0 0 1.3rem; font-style:italic;}
-  .jury-row{display:flex; gap:0.5rem; margin-bottom:1.1rem; flex-wrap:wrap;}
-  .jsym{
-    width:26px; height:26px; border-radius:50%; background:var(--ink-soft); opacity:0.55;
-    flex:0 0 auto;
+  body {
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-serif);
+    font-size: 20px;
+    line-height: 1.72;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    transition: background-color 0.2s ease, color 0.2s ease;
   }
-  .jsym.holdout{background:var(--accent); opacity:1;}
-  .jury-cap{font-size:0.92rem; color:var(--ink-soft); line-height:1.55;}
-  .jury-cap strong{color:var(--ink); font-weight:600; font-style:normal;}
 
-  .endnotes{margin-top:4rem; padding-top:1.6rem; border-top:1px solid var(--rule);}
-  .endnotes h4{font-family:'Fraunces',serif; font-weight:500; font-size:1.05rem; margin:0 0 1rem;}
-  .endnotes ol{padding-left:1.2rem; margin:0; font-size:0.92rem; color:var(--ink-soft); line-height:1.6;}
-  .endnotes li{margin-bottom:0.6rem;}
-  .endnotes a{color:var(--ink-soft);}
+  /* Reading Progress Line */
+  #scroll-gauge {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    background: var(--accent);
+    width: 0%;
+    z-index: 999;
+    transition: width 0.08s linear;
+  }
+
+  /* Broadsheet Masthead */
+  .masthead {
+    border-bottom: 1px solid var(--rule-dark);
+    padding: 1.1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    background: var(--paper);
+    z-index: 100;
+  }
+
+  .masthead-pub {
+    font-family: var(--font-display);
+    font-size: 0.88rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  .masthead-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .theme-btn {
+    background: none;
+    border: 1px solid var(--rule);
+    color: var(--ink-muted);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    padding: 0.35rem 0.75rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .theme-btn:hover {
+    border-color: var(--rule-dark);
+    color: var(--ink);
+  }
+
+  /* Article Wrapper */
+  main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 4.5rem 1.5rem 7rem 1.5rem;
+  }
+
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--accent);
+    margin-bottom: 1.2rem;
+    display: block;
+    font-weight: 600;
+  }
+
+  h1.headline {
+    font-family: var(--font-heading);
+    font-size: clamp(2.1rem, 5vw, 3.2rem);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    margin-bottom: 1.5rem;
+  }
+
+  .deck {
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--ink-muted);
+    line-height: 1.55;
+    margin-bottom: 2rem;
+  }
+
+  .meta-bar {
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.85rem 0;
+    margin-bottom: 3.5rem;
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--ink-muted);
+  }
+
+  /* Body Formatting */
+  p {
+    margin-bottom: 1.75rem;
+  }
+
+  p.lede::first-letter {
+    float: left;
+    font-family: var(--font-heading);
+    font-size: 4.8rem;
+    line-height: 0.8;
+    padding-top: 4px;
+    padding-right: 14px;
+    padding-bottom: 0;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  h2 {
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    font-weight: 500;
+    line-height: 1.25;
+    margin: 3.6rem 0 1.4rem 0;
+    letter-spacing: -0.01em;
+  }
+
+  blockquote {
+    border-left: 2px solid var(--accent);
+    padding-left: 1.5rem;
+    margin: 2.8rem 0;
+    font-style: italic;
+    font-size: 1.2rem;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+
+  /* Dual Reality Evidence Exhibit */
+  .exhibit-box {
+    border: 1px solid var(--rule-dark);
+    background: var(--paper-surface);
+    margin: 3.5rem 0;
+    padding: 1.85rem;
+  }
+
+  .exhibit-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 0.75rem;
+    margin-bottom: 1.4rem;
+  }
+
+  .exhibit-tag {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+  }
+
+  .exhibit-title {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-style: italic;
+  }
+
+  .tab-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 1px solid var(--rule);
+    margin-bottom: 1.5rem;
+    background: var(--paper);
+  }
+
+  .tab-btn {
+    background: none;
+    border: none;
+    padding: 0.75rem 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: var(--ink-muted);
+    border-right: 1px solid var(--rule);
+    transition: all 0.12s;
+  }
+  .tab-btn:last-child { border-right: none; }
+  .tab-btn.active {
+    background: var(--rule-dark);
+    color: var(--paper);
+    font-weight: 600;
+  }
+
+  .timeline-panel {
+    display: none;
+    font-size: 0.95rem;
+    line-height: 1.58;
+  }
+  .timeline-panel.active { display: block; }
+
+  .event-row {
+    border-bottom: 1px solid var(--rule);
+    padding: 0.85rem 0;
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 1.2rem;
+  }
+  .event-row:last-child { border-bottom: none; }
+
+  .event-time {
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    color: var(--ink-muted);
+  }
+  .event-desc strong {
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  /* 11-1 Jury Deliberation Dossier */
+  .jury-dossier {
+    border: 1px solid var(--rule-dark);
+    background: var(--paper);
+    padding: 2rem;
+    margin: 3.5rem 0;
+  }
+
+  .dossier-legend {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-muted);
+    margin-bottom: 1.4rem;
+  }
+
+  .juror-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+    margin-bottom: 1.5rem;
+  }
+
+  .juror-token {
+    border: 1px solid var(--rule);
+    background: var(--paper-surface);
+    aspect-ratio: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    transition: all 0.12s;
+  }
+  .juror-token:hover {
+    background: var(--paper-card);
+  }
+  .juror-token.holdout {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: #FFF;
+  }
+  .juror-token.selected {
+    outline: 2px solid var(--rule-dark);
+    outline-offset: 1px;
+  }
+
+  .juror-detail {
+    border-top: 1px solid var(--rule);
+    padding-top: 1.25rem;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    min-height: 110px;
+  }
+
+  .juror-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 0.35rem;
+  }
+
+  /* Standardized Metric Matrix Simulator */
+  .matrix-module {
+    border: 1px solid var(--rule-dark);
+    background: var(--paper-surface);
+    margin: 3.5rem 0;
+    padding: 2rem;
+  }
+
+  .matrix-header {
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 0.85rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .matrix-header-tag {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .matrix-title {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    margin-top: 0.25rem;
+  }
+
+  .matrix-item {
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    cursor: pointer;
+  }
+  .matrix-item:last-of-type { border-bottom: none; }
+
+  .matrix-check {
+    margin-top: 0.3rem;
+    width: 17px;
+    height: 17px;
+    accent-color: var(--accent);
+    cursor: pointer;
+  }
+
+  .matrix-item-content strong {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.2rem;
+    color: var(--ink);
+  }
+
+  .matrix-item-content p {
+    font-size: 0.9rem;
+    color: var(--ink-muted);
+    line-height: 1.45;
+    margin-bottom: 0;
+  }
+
+  .matrix-readout {
+    margin-top: 1.5rem;
+    border-top: 2px solid var(--rule-dark);
+    padding-top: 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .matrix-score-box {
+    font-family: var(--font-mono);
+  }
+  .matrix-score-val {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .matrix-status {
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .matrix-status.qualified { color: #2A6E55; }
+  .matrix-status.unqualified { color: var(--accent); }
+
+  .matrix-dilemma-note {
+    width: 100%;
+    margin-top: 0.75rem;
+    font-size: 0.88rem;
+    font-style: italic;
+    color: var(--ink-muted);
+    border-left: 2px solid var(--rule-dark);
+    padding-left: 0.9rem;
+  }
+
+  /* Citations & Notes */
+  .endnotes {
+    border-top: 2px solid var(--rule-dark);
+    margin-top: 4.5rem;
+    padding-top: 1.85rem;
+    font-size: 0.9rem;
+    color: var(--ink-muted);
+  }
+
+  .endnotes h4 {
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--ink);
+    margin-bottom: 1rem;
+  }
+
+  .endnotes ol {
+    padding-left: 1.25rem;
+    font-family: var(--font-serif);
+    line-height: 1.6;
+  }
+  .endnotes li { margin-bottom: 0.75rem; }
+
+  @media (max-width: 620px) {
+    body { font-size: 18px; }
+    .masthead { padding: 1rem; }
+    main { padding: 2.5rem 1rem 5rem 1rem; }
+    .juror-grid { grid-template-columns: repeat(4, 1fr); }
+    .event-row { grid-template-columns: 1fr; gap: 0.25rem; }
+  }
 </style>
 </head>
 <body>
-<div id="bar"></div>
-<header>
-  <div class="logo">The Jurisprudence Review</div>
-  <button id="theme-btn" onclick="toggleTheme()">Dark mode</button>
+
+<div id="scroll-gauge"></div>
+
+<header class="masthead">
+  <div class="masthead-pub">The Jurisprudence Review</div>
+  <div class="masthead-nav">
+    <span>Legal Epistemology Desk</span>
+    <button class="theme-btn" id="theme-btn" type="button" onclick="toggleTheme()">Ink / Dark</button>
+  </div>
 </header>
 
 <main>
-  <p class="section-label">Legal affairs</p>
-  <h1>When Facts Aren't Enough: What the Lindsay Clancy Mistrial Teaches Us About Truth and the Law</h1>
-  <p class="dek">A jury split 11 to 1 on a case where nobody disputed what happened. The disagreement was never about the facts.</p>
-  <div class="byline">By the Jurisprudence Review editorial desk. Published September 25, 2026.</div>
+  <span class="section-label">Provocative Analysis // The Clancy Deadlock</span>
+  
+  <h1 class="headline">We Agree on the Facts, So Why Couldn't the Lindsay Clancy Jury Agree on the Truth?</h1>
+  
+  <p class="deck">When every physical action is proved beyond a reasonable doubt, yet twelve citizens still divide eleven to one, the breakdown belongs to philosophy, not evidence.</p>
+
+  <div class="meta-bar">
+    <span>Massachusetts Superior Court Docket</span>
+    <span>Special Longform Inquiry</span>
+    <span>Published Fall 2026</span>
+  </div>
 
   <article>
-    <p class="lede">We like to think the legal system is built on a simple foundation. Find the facts, apply the law, and reach a verdict. If something happened, you look at the evidence. You do not build elaborate theories or guess at hidden motives. You stick to what is objective and verifiable.</p>
+    <p class="lede">We like to think the legal system is built on a simple foundation. Find the facts, apply the law, and reach a verdict. If an event occurs, you look at the evidence. You do not build elaborate theories or guess at hidden motives. You stick to what is objective and verifiable.</p>
 
-    <p>In philosophy, this mindset has a few names. It falls under epistemology, the study of knowledge, and leans heavily on the <em>correspondence theory of truth</em><sup><a href="#fn3">3</a></sup>, the idea that a statement is only true if it matches actual, physical reality. It is a mix of radical empiricism and positivism, where unprovable narratives are set aside and only observable data counts.</p>
+    <p>In philosophy, this mindset has a few names. It falls under epistemology, which is the study of knowledge, and leans heavily on the Correspondence Theory of Truth. This theory says a statement is only true if it matches actual, physical reality. It is a mix of radical empiricism and positivism, where unprovable narratives are thrown out and only observable data matters.</p>
 
-    <p>But what happens when the physical facts are undisputed and the justice system gridlocks anyway? The recent mistrial in the Lindsay Clancy case is a stark example of a fact-first approach hitting its limit.</p>
+    <p>But what happens when the physical facts are undisputed, yet the justice system completely gridlocks anyway?</p>
 
-    <blockquote>On September 4, 2026, a Massachusetts judge declared a mistrial after the jury deadlocked eleven to one.<sup><a href="#fn2">2</a></sup> The tragedy itself was never in dispute. No one argued over what physically happened on January 24, 2023.</blockquote>
+    <p>The recent mistrial in the Lindsay Clancy case is a perfect, agonizing example of what happens when a fact-first approach hits a brick wall.</p>
 
-    <p>The timeline is clear. Lindsay Clancy sent her husband out for food and medicine. While he was gone, she took the lives of her three children before jumping from a top-floor window, an act that left her permanently paralyzed.</p>
+    <blockquote>
+      On September 4, 2026, a Massachusetts judge declared a mistrial after the jury deadlocked 11 to 1. The tragedy itself is not up for debate. No one is arguing over what physically happened on January 24, 2023.
+    </blockquote>
 
-    <p>Look strictly at the physical record, though, and both sides of the trial managed to anchor themselves to entirely different versions of that same afternoon.</p>
+    <p>The timeline is clear. Lindsay Clancy sent her husband out for food and medicine. While he was gone, she took the lives of her three children before jumping out of a top-floor window, leaving herself permanently paralyzed.</p>
 
-    <div class="exhibit">
-      <h3>The record, read two ways</h3>
-      <div class="evidence">
-        <div>
-          <h4>Prosecution's timeline</h4>
-          <dl>
-            <dt>4:02 pm</dt><dd>A mapping app query calculates travel time to a Plymouth restaurant: roughly forty-two minutes round trip.</dd>
-            <dt>4:53 pm</dt><dd>She instructs her husband to pick up takeout and children's medicine, confirming his departure.</dd>
-            <dt>5:15 pm</dt><dd>Alone in the house, within the calculated window.</dd>
-            <dt>5:32 pm</dt><dd>The jump from the top-floor window; emergency responders arrive within minutes.</dd>
-          </dl>
+    <p>If you look strictly at the physical data, both sides of the trial managed to anchor themselves to entirely different versions of reality.</p>
+
+    <!-- DUAL TIMELINE COMPARATOR EXHIBIT -->
+    <div class="exhibit-box">
+      <div class="exhibit-header">
+        <span class="exhibit-tag">Evidentiary Record [Exhibit A]</span>
+        <span class="exhibit-title">January 24, 2023: Two Incompatible Readouts</span>
+      </div>
+
+      <div class="tab-grid">
+        <button class="tab-btn active" id="btn-pros" type="button" onclick="setTimeline('pros')">Prosecution: Empirical Action Log</button>
+        <button class="tab-btn" id="btn-def" type="button" onclick="setTimeline('def')">Defense: Clinical Paper Trail</button>
+      </div>
+
+      <!-- Prosecution Timeline -->
+      <div class="timeline-panel active" id="panel-pros">
+        <div class="event-row">
+          <span class="event-time">4:02 PM</span>
+          <div class="event-desc"><strong>Apple Maps Query:</strong> Measured precise round-trip driving time to a takeout restaurant in Plymouth (calculated at 42 minutes).</div>
         </div>
-        <div>
-          <h4>Defense's record</h4>
-          <dl>
-            <dt>Oct. 2022</dt><dd>Psychiatric intake notes document the onset of severe postpartum anxiety and intrusive thoughts.</dd>
-            <dt>Nov.–Dec. 2022</dt><dd>More than a dozen psychiatric medications prescribed and adjusted across sixteen weeks.</dd>
-            <dt>Jan. 2023</dt><dd>Clinical notes repeatedly record her describing herself as feeling like "a zombie," without a sense of agency.</dd>
-            <dt>After the fall</dt><dd>A complete spinal cord injury, consistent with an act with no self-preserving instinct.</dd>
-          </dl>
+        <div class="event-row">
+          <span class="event-time">4:53 PM</span>
+          <div class="event-desc"><strong>Errand Dispatch:</strong> Husband instructed to pick up dinner and children's medicine, verifying departure from the residence.</div>
+        </div>
+        <div class="event-row">
+          <span class="event-time">5:15 PM</span>
+          <div class="event-desc"><strong>Coordinated Execution:</strong> Fatal acts carried out within the calculated window of solitary control.</div>
+        </div>
+        <div class="event-row">
+          <span class="event-time">5:32 PM</span>
+          <div class="event-desc"><strong>Window Exit:</strong> Jump from the top-floor window, leaving defendant paralyzed on impact.</div>
+        </div>
+      </div>
+
+      <!-- Defense Timeline -->
+      <div class="timeline-panel" id="panel-def">
+        <div class="event-row">
+          <span class="event-time">Oct 2022</span>
+          <div class="event-desc"><strong>Psychiatric Onset:</strong> Documented rapid postpartum depression with intrusive thoughts and worsening dissociation.</div>
+        </div>
+        <div class="event-row">
+          <span class="event-time">Nov-Dec 2022</span>
+          <div class="event-desc"><strong>Severe Polypharmacy:</strong> Twelve different neuroleptic and antidepressant medications prescribed and adjusted across four months.</div>
+        </div>
+        <div class="event-row">
+          <span class="event-time">Jan 2023</span>
+          <div class="event-desc"><strong>Clinical Delirium:</strong> Multiple psychiatric consultations noting emotional numbness and complete reality dissociation.</div>
+        </div>
+        <div class="event-row">
+          <span class="event-time">Immediate</span>
+          <div class="event-desc"><strong>Irreversible Paraplegia:</strong> Complete spinal transection from jump, establishing absence of self-preservation instinct.</div>
         </div>
       </div>
     </div>
 
-    <p>The prosecution built its case on a sequence of deliberate, ordinary-seeming actions: a route calculated, an errand timed. To a strict empiricist, that sequence reads as goal-directed behavior. It is exactly what the lone dissenting juror, Michael Péguy Desronvil, pointed to when he said he voted to convict of murder based on the physical evidence and the prosecution's timeline alone.</p>
+    <p>The prosecution built a timeline of cold, physical actions. They showed she looked up transit times and calculated exactly how long she would be alone. To a strict empiricist, the data shows goal-directed behavior. This is exactly what the lone holdout juror, Michael Péguy Desronvil, focused on when he stated he voted for a murder conviction based strictly on the physical evidence and the prosecution's timeline.</p>
 
-    <p>The defense answered with its own set of hard, documented facts: a paper trail of psychiatric decline, a heavily adjusted cocktail of prescriptions, and the plain physical fact of her own attempted suicide moments later. To the other eleven jurors, this was not a theory. It was clinical evidence of postpartum psychosis severe enough to remove her capacity to control her actions.</p>
+    <p>The defense countered with their own set of hard medical facts. They presented a paper trail of severe psychiatric decline, a massive cocktail of heavily adjusted prescription medications, and the undeniable physical reality of her immediate suicide attempt. To the other 11 jurors, these medical records were not a theory. They were clinical data proving she was suffering from severe postpartum psychosis and lacked the capacity to control her actions.</p>
 
-    <h2>The McHoul problem: measuring an invisible mind</h2>
+    <h2>The McHoul Standard: Measuring the Unbiopsiable Mind</h2>
 
-    <p>This is where the philosophical friction becomes a legal impasse. Massachusetts follows the <em>McHoul</em> standard for criminal responsibility<sup><a href="#fn1">1</a></sup>, asking whether a defendant lacked the capacity to understand the wrongfulness of her conduct, or lacked the ability to conform her behavior to the law.</p>
+    <p>This is where the philosophical friction turns into a legal nightmare. Massachusetts law uses the McHoul standard to determine criminal responsibility. It asks whether a defendant lacked the capacity to understand the wrongfulness of their conduct, or if they lacked the ability to conform their behavior to the law.</p>
 
-    <p>A mind has no instrument panel, and you cannot biopsy what someone was thinking two years earlier, so how does a jury measure capacity, or the absence of it, objectively? The moment the law asks twelve people to evaluate a defendant's mental state, it asks them to leave the ground of physical fact and choose between competing accounts of an interior life none of them can see.</p>
+    <p>But how do you measure capacity or control objectively?</p>
 
-    <div class="jury">
-      <h3>Eleven jurors, one dissent</h3>
-      <div class="jury-row">
-        <div class="jsym"></div><div class="jsym"></div><div class="jsym"></div><div class="jsym"></div>
-        <div class="jsym"></div><div class="jsym"></div><div class="jsym holdout"></div><div class="jsym"></div>
-        <div class="jsym"></div><div class="jsym"></div><div class="jsym"></div><div class="jsym"></div>
+    <p>Human brains do not have a digital readout. You cannot biopsy a mind to see what it was thinking two years ago. The moment the law requires a jury to evaluate a defendant's mental state, it forces them to step away from physical facts and choose between competing psychological theories.</p>
+
+    <!-- 11-1 JUROR MATRIX EXHIBIT -->
+    <div class="jury-dossier">
+      <div class="dossier-legend">
+        <span>Jury Deliberation Grid</span>
+        <span>Select Juror to Inspect Record</span>
       </div>
-      <p class="jury-cap"><strong>Eleven jurors</strong> voted not guilty by reason of insanity, concluding that documented postpartum psychosis and involuntary polypharmacy had destroyed her ability to conform her conduct to the law. <strong>The single dissent</strong>, shown colored above, voted to convict of murder, holding that the navigation searches and timed errand showed rational premeditation regardless of the medical record.</p>
+
+      <div class="juror-grid">
+        <div class="juror-token" role="button" tabindex="0" onclick="selectJuror(1, 'defense')">J-01</div>
+        <div class="juror-token" role="button" tabindex="0" onclick="selectJuror(2, 'defense')">J-02</div>
+        <div class="juror-token" role="button" tabindex="0" onclick="selectJuror(3, 'defense')">J-03</div>
+        <div class="juror-token" role="button" tabindex="0" onclick="selectJuror(4, 'defense')">J-04</div>
+        <div class="juror-token" role="button" tabindex="0" onclick="selectJuror(5, 'defense')">J-05</div>
+        <div class="juror-token" role="button" tabindex="0" onclick="selectJuror(6, 'defense')">J-06</div>
+        <div class="juror-token" role="button" tabindex="0" onclick="selectJuror(7, 'defense')">J-07</div>
+        <div class="juror-token holdout selected" id="holdout-juror" role="button" tabindex="0" onclick="selectJuror(8, 'holdout')">J-08</div>
+        <div class="juror-token" role="button" tabindex="0" onclick="selectJuror(9, 'defense')">J-09</div>
+        <div class="juror-token" role="button" tabindex="0" onclick="selectJuror(10, 'defense')">J-10</div>
+        <div class="juror-token" role="button" tabindex="0" onclick="selectJuror(11, 'defense')">J-11</div>
+        <div class="juror-token" role="button" tabindex="0" onclick="selectJuror(12, 'defense')">J-12</div>
+      </div>
+
+      <div class="juror-detail" id="juror-detail-box">
+        <div class="juror-label" id="juror-detail-title">JUROR 08 [MICHAEL PÉGUY DESRONVIL: LONE HOLDOUT]</div>
+        <p id="juror-detail-text">Voted to convict on murder charges. Grounded position entirely in the physical actions: the transit query calculations and errand timeline demonstrated rational, goal-directed conduct that cannot be dismissed by subjective medical interpretations.</p>
+      </div>
     </div>
 
-    <p>It leaves a system where twelve ordinary citizens are asked to draw a line on a map with no coordinates. Rely only on the physical act, and you risk convicting someone with no rational control over her own mind. Open the door to unmeasurable mental states, and you introduce a subjectivity that makes uniform justice nearly impossible.</p>
+    <h2>The Standardized Metric Matrix: Can an Algorithm Replace Conscience?</h2>
 
-    <p>What the eleven-to-one split in the Clancy trial really showed is a deeper problem. When a mind breaks down completely, the truth of what happened can be easy to establish. The truth of why can stay out of reach permanently.</p>
+    <p>One potential solution to this breakdown is a standardized, checklist-driven evaluation framework. Instead of asking a jury to interpret subjective testimony, the court would rely on a strict, metric-based matrix. This framework would require verifiable physiological markers, such as immediate post-event brain imaging, a documented timeline of high-risk medication changes, and standardized, blind psychiatric testing data. If a defendant scores past a predetermined mathematical threshold, the medical criteria for insanity would be officially checked off.</p>
+
+    <!-- STANDARDIZED CLINICAL MATRIX SIMULATOR -->
+    <div class="matrix-module">
+      <div class="matrix-header">
+        <span class="matrix-header-tag">Proposed Diagnostic Framework</span>
+        <h3 class="matrix-title">Objective Physiological & Clinical Matrix</h3>
+      </div>
+
+      <div class="matrix-item" onclick="toggleMetric('m1')">
+        <input type="checkbox" id="m1" class="matrix-check" checked onchange="calculateScore()">
+        <div class="matrix-item-content">
+          <strong>Marker 1: Documented High-Risk Medication Volatility (+35 pts)</strong>
+          <p>Verified clinical paper trail showing active titration or abrupt adjustment of 5 or more neuro-active medications within 90 days preceding event.</p>
+        </div>
+      </div>
+
+      <div class="matrix-item" onclick="toggleMetric('m2')">
+        <input type="checkbox" id="m2" class="matrix-check" checked onchange="calculateScore()">
+        <div class="matrix-item-content">
+          <strong>Marker 2: Catastrophic Physiological Trauma Marker (+30 pts)</strong>
+          <p>Immediate, non-hedged self-harm acts resulting in verifiable organic trauma (spinal transection, severe fractures) proving complete failure of self-preservation instinct.</p>
+        </div>
+      </div>
+
+      <div class="matrix-item" onclick="toggleMetric('m3')">
+        <input type="checkbox" id="m3" class="matrix-check" checked onchange="calculateScore()">
+        <div class="matrix-item-content">
+          <strong>Marker 3: Blind Standardized Psychiatric Evaluation Battery (+20 pts)</strong>
+          <p>Double-blind diagnostic review establishing psychotic fragmentation, derealization, or inability to distinguish delusion from reality.</p>
+        </div>
+      </div>
+
+      <div class="matrix-item" onclick="toggleMetric('m4')">
+        <input type="checkbox" id="m4" class="matrix-check" onchange="calculateScore()">
+        <div class="matrix-item-content">
+          <strong>Marker 4: Acute Post-Event Neurological / Biomarker Deviation (+15 pts)</strong>
+          <p>Abnormal electroencephalogram (EEG) readings or verifiable neuroendocrine disruption recorded within 72 hours of admission.</p>
+        </div>
+      </div>
+
+      <div class="matrix-readout">
+        <div class="matrix-score-box">
+          <div>COMPOSITE CLINICAL SCORE</div>
+          <div class="matrix-score-val" id="score-display">85 / 100</div>
+        </div>
+        <div id="status-display" class="matrix-status qualified">THRESHOLD MET (Insanity Metric Satisfied)</div>
+
+        <div class="matrix-dilemma-note">
+          Notice the limitation: The matrix verifies clinical pathology, but it cannot calculate whether volition existed during the forty-two minutes Lindsay Clancy was alone.
+        </div>
+      </div>
+    </div>
+
+    <p>However, even if we implement a strict medical checklist, the ultimate decision must still belong to the jury. A checklist can verify the boundaries of a medical condition, but a jury must decide how those medical realities interacted with the physical actions.</p>
+
+    <p>Without that human element, we are left with a system where twelve regular citizens are forced to draw an arbitrary line on a map that has no coordinates. If we look strictly at the physical act, we risk convicting someone who had absolutely no rational control over their own mind. If we open the door to unmeasurable mental states without objective boundaries, we introduce a level of subjectivity that makes universal justice impossible.</p>
+
+    <p>The 11-1 split in the Clancy trial was not just a failure to agree on a verdict. It was a reflection of a fundamental human dilemma.</p>
   </article>
 
-  <div class="endnotes">
-    <h4>Notes</h4>
+  <footer class="endnotes">
+    <h4>Judicial Citations & References</h4>
     <ol>
-      <li id="fn1"><em>Commonwealth v. McHoul</em>, 352 Mass. 544 (1967), establishes the Massachusetts standard for lack of criminal responsibility due to mental disease or defect.</li>
-      <li id="fn2">Juror statements documented in post-declaration filings, Plymouth Superior Court, September 2026.</li>
-      <li id="fn3">The correspondence theory of truth holds that a statement's truth consists in its relation to fact, to reality as it is, independent of belief.</li>
+      <li>Commonwealth v. McHoul, 352 Mass. 544 (1967): Established the Massachusetts standard for criminal responsibility, derived from Section 4.01 of the Model Penal Code.</li>
+      <li>Superior Court of Plymouth County, Commonwealth v. Clancy, Docket No. 2383CR00042: Mistrial declared September 4, 2026.</li>
+      <li>Radical Empiricism and the Correspondence Theory: Classical epistemology holding that factual truth requires a direct correspondence between external physical evidence and internal mental states.</li>
     </ol>
-  </div>
+  </footer>
 </main>
 
 <script>
-  window.addEventListener('scroll', () => {
-    const h = document.documentElement.scrollHeight - window.innerHeight;
-    document.getElementById('bar').style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+  // Ensure the viewport always starts at the top and disable browser scroll memory
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    window.scrollTo(0, 0);
   });
-  function toggleTheme(){
+
+  window.addEventListener('load', () => {
+    window.scrollTo(0, 0);
+    // Remove any lingering URL hash (e.g. #fn1, #endnotes) that pulls the page downward
+    if (window.location.hash) {
+      history.replaceState(null, null, window.location.pathname);
+    }
+  });
+
+  // Reading Progress Indicator
+  window.addEventListener('scroll', () => {
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0;
+    const gauge = document.getElementById('scroll-gauge');
+    if (gauge) gauge.style.width = Math.min(100, Math.max(0, progress)) + '%';
+  });
+
+  // Dark / Ink Mode Toggle
+  function toggleTheme() {
     const root = document.documentElement;
-    const now = root.getAttribute('data-theme');
-    const next = now === 'dark' ? 'light' : 'dark';
+    const current = root.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
     root.setAttribute('data-theme', next);
-    document.getElementById('theme-btn').textContent = next === 'dark' ? 'Light mode' : 'Dark mode';
+    const btn = document.getElementById('theme-btn');
+    if (btn) btn.textContent = next === 'dark' ? 'Paper / Light' : 'Ink / Dark';
+  }
+
+  // Dual Timeline Tab Controller
+  function setTimeline(side) {
+    const btnPros = document.getElementById('btn-pros');
+    const btnDef = document.getElementById('btn-def');
+    const panPros = document.getElementById('panel-pros');
+    const panDef = document.getElementById('panel-def');
+
+    if (btnPros) btnPros.classList.toggle('active', side === 'pros');
+    if (btnDef) btnDef.classList.toggle('active', side === 'def');
+    if (panPros) panPros.classList.toggle('active', side === 'pros');
+    if (panDef) panDef.classList.toggle('active', side === 'def');
+  }
+
+  // Juror Dossier Inspector
+  const jurorData = {
+    holdout: {
+      label: "JUROR 08 [MICHAEL PÉGUY DESRONVIL: LONE HOLDOUT]",
+      body: "Voted to convict on murder charges. Grounded position entirely in the physical actions: the transit query calculations and errand timeline demonstrated rational, goal-directed conduct that cannot be dismissed by subjective medical interpretations."
+    },
+    defense: {
+      label: "JURORS 01-07 & 09-12 [CONSENSUS MAJORITY: 11 VOTES]",
+      body: "Voted for Not Guilty by Reason of Insanity (NGRI). Maintained that the clinical paper trail of postpartum psychosis and severe polypharmacy proved Lindsay Clancy lacked the volitional capacity to conform her behavior to the law under the McHoul standard."
+    }
+  };
+
+  function selectJuror(id, type) {
+    document.querySelectorAll('.juror-token').forEach(el => el.classList.remove('selected'));
+    if (event && event.currentTarget) {
+      event.currentTarget.classList.add('selected');
+    }
+
+    const data = jurorData[type];
+    const titleEl = document.getElementById('juror-detail-title');
+    const textEl = document.getElementById('juror-detail-text');
+
+    if (titleEl) {
+      titleEl.textContent = type === 'holdout' 
+        ? data.label 
+        : `JUROR ${id.toString().padStart(2, '0')} [MAJORITY POSITION: NGRI]`;
+    }
+    if (textEl) {
+      textEl.textContent = data.body;
+    }
+  }
+
+  // Standardized Matrix Calculation
+  function toggleMetric(id) {
+    const cb = document.getElementById(id);
+    if (event && event.target !== cb && cb) {
+      cb.checked = !cb.checked;
+      calculateScore();
+    }
+  }
+
+  function calculateScore() {
+    let score = 0;
+    const m1 = document.getElementById('m1');
+    const m2 = document.getElementById('m2');
+    const m3 = document.getElementById('m3');
+    const m4 = document.getElementById('m4');
+
+    if (m1 && m1.checked) score += 35;
+    if (m2 && m2.checked) score += 30;
+    if (m3 && m3.checked) score += 20;
+    if (m4 && m4.checked) score += 15;
+
+    const display = document.getElementById('score-display');
+    const status = document.getElementById('status-display');
+
+    if (display) display.textContent = `${score} / 100`;
+
+    if (status) {
+      if (score >= 70) {
+        status.textContent = "THRESHOLD MET (Insanity Metric Satisfied)";
+        status.className = "matrix-status qualified";
+      } else {
+        status.textContent = "THRESHOLD UNMET (Insufficient Objective Markers)";
+        status.className = "matrix-status unqualified";
+      }
+    }
   }
 </script>
 </body>
