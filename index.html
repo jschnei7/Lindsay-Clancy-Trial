@@ -1,0 +1,210 @@
+bash
+
+cat /mnt/user-data/outputs/lindsay-clancy-article.html
+Output
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>When Facts Aren't Enough: The Lindsay Clancy Mistrial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F1EEE6; --paper-deep:#E7E1D2; --ink:#1C1B19; --ink-soft:#57544A;
+    --rule:#D3CCB9; --accent:#6E2B33;
+    font-family:'Spectral',Georgia,serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#17171A; --paper-deep:#1E1E22; --ink:#E7E3D6; --ink-soft:#A29D8D;
+      --rule:#312F29; --accent:#B85D66;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#17171A; --paper-deep:#1E1E22; --ink:#E7E3D6; --ink-soft:#A29D8D;
+    --rule:#312F29; --accent:#B85D66;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-padding-top:env(safe-area-inset-top,0px);}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-size:20px; line-height:1.7;
+    padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+    -webkit-font-smoothing:antialiased;
+  }
+  #bar{position:fixed; top:env(safe-area-inset-top,0px); left:0; height:2px; background:var(--accent); width:0%; z-index:10;}
+
+  header{
+    display:flex; justify-content:space-between; align-items:baseline;
+    padding:1.1rem 1.5rem; border-bottom:1px solid var(--rule);
+    position:sticky; top:env(safe-area-inset-top,0px); background:var(--paper); z-index:5;
+  }
+  .logo{font-family:'Fraunces',serif; font-weight:600; font-size:1.05rem; letter-spacing:0.01em;}
+  .logo em{font-style:italic; font-weight:400; color:var(--ink-soft);}
+  #theme-btn{
+    background:none; border:1px solid var(--rule); color:var(--ink-soft);
+    font-family:'Spectral',serif; font-size:0.82rem; padding:0.3rem 0.7rem;
+    cursor:pointer; border-radius:2px;
+  }
+  #theme-btn:hover{border-color:var(--ink-soft); color:var(--ink);}
+
+  main{max-width:660px; margin:0 auto; padding:3.5rem 1.5rem 5rem;}
+  .section-label{font-style:italic; color:var(--ink-soft); font-size:0.95rem; margin-bottom:0.9rem;}
+  h1{
+    font-family:'Fraunces',serif; font-weight:500; font-size:clamp(2rem,5vw,2.9rem);
+    line-height:1.18; letter-spacing:-0.01em; margin:0 0 1.1rem;
+  }
+  .dek{font-style:italic; color:var(--ink-soft); font-size:1.15rem; line-height:1.55; margin-bottom:1.6rem;}
+  .byline{
+    font-size:0.92rem; color:var(--ink-soft); border-top:1px solid var(--rule);
+    padding-top:0.9rem; margin-bottom:3rem;
+  }
+
+  article p{margin:0 0 1.5rem;}
+  article p.lede::first-letter{
+    font-family:'Fraunces',serif; font-weight:500; font-size:3.6rem; line-height:0.75;
+    float:left; padding:0.1rem 0.5rem 0 0; color:var(--ink);
+  }
+  article h2{
+    font-family:'Fraunces',serif; font-weight:500; font-size:1.55rem;
+    margin:3rem 0 1.1rem; line-height:1.3;
+  }
+  article sup a{color:var(--accent); text-decoration:none; font-size:0.75em;}
+  article sup a:hover{text-decoration:underline;}
+
+  blockquote{
+    margin:2.4rem 0; padding-left:1.4rem; border-left:2px solid var(--accent);
+    font-style:italic; font-size:1.12rem; color:var(--ink); line-height:1.55;
+  }
+
+  .exhibit{margin:3rem 0; padding:1.7rem 0; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);}
+  .exhibit h3{font-family:'Fraunces',serif; font-weight:500; font-size:1.15rem; margin:0 0 1.2rem; font-style:italic;}
+  .evidence{display:grid; grid-template-columns:1fr 1fr; gap:2rem;}
+  .evidence h4{font-size:0.88rem; text-transform:none; letter-spacing:0.01em; color:var(--ink-soft); font-weight:600; margin:0 0 0.7rem; border-bottom:1px solid var(--rule); padding-bottom:0.4rem;}
+  .evidence dl{margin:0;}
+  .evidence dt{font-size:0.85rem; color:var(--accent); font-style:italic; margin-top:0.85rem;}
+  .evidence dd{margin:0.15rem 0 0; font-size:0.95rem; line-height:1.5;}
+  @media (max-width:600px){.evidence{grid-template-columns:1fr; gap:1.6rem;}}
+
+  .jury{margin:3rem 0; padding:1.8rem 0; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);}
+  .jury h3{font-family:'Fraunces',serif; font-weight:500; font-size:1.15rem; margin:0 0 1.3rem; font-style:italic;}
+  .jury-row{display:flex; gap:0.5rem; margin-bottom:1.1rem; flex-wrap:wrap;}
+  .jsym{
+    width:26px; height:26px; border-radius:50%; background:var(--ink-soft); opacity:0.55;
+    flex:0 0 auto;
+  }
+  .jsym.holdout{background:var(--accent); opacity:1;}
+  .jury-cap{font-size:0.92rem; color:var(--ink-soft); line-height:1.55;}
+  .jury-cap strong{color:var(--ink); font-weight:600; font-style:normal;}
+
+  .endnotes{margin-top:4rem; padding-top:1.6rem; border-top:1px solid var(--rule);}
+  .endnotes h4{font-family:'Fraunces',serif; font-weight:500; font-size:1.05rem; margin:0 0 1rem;}
+  .endnotes ol{padding-left:1.2rem; margin:0; font-size:0.92rem; color:var(--ink-soft); line-height:1.6;}
+  .endnotes li{margin-bottom:0.6rem;}
+  .endnotes a{color:var(--ink-soft);}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+<header>
+  <div class="logo">The Jurisprudence Review</div>
+  <button id="theme-btn" onclick="toggleTheme()">Dark mode</button>
+</header>
+
+<main>
+  <p class="section-label">Legal affairs</p>
+  <h1>When Facts Aren't Enough: What the Lindsay Clancy Mistrial Teaches Us About Truth and the Law</h1>
+  <p class="dek">A jury split 11 to 1 on a case where nobody disputed what happened. The disagreement was never about the facts.</p>
+  <div class="byline">By the Jurisprudence Review editorial desk. Published September 25, 2026.</div>
+
+  <article>
+    <p class="lede">We like to think the legal system is built on a simple foundation. Find the facts, apply the law, and reach a verdict. If something happened, you look at the evidence. You do not build elaborate theories or guess at hidden motives. You stick to what is objective and verifiable.</p>
+
+    <p>In philosophy, this mindset has a few names. It falls under epistemology, the study of knowledge, and leans heavily on the <em>correspondence theory of truth</em><sup><a href="#fn3">3</a></sup>, the idea that a statement is only true if it matches actual, physical reality. It is a mix of radical empiricism and positivism, where unprovable narratives are set aside and only observable data counts.</p>
+
+    <p>But what happens when the physical facts are undisputed and the justice system gridlocks anyway? The recent mistrial in the Lindsay Clancy case is a stark example of a fact-first approach hitting its limit.</p>
+
+    <blockquote>On September 4, 2026, a Massachusetts judge declared a mistrial after the jury deadlocked eleven to one.<sup><a href="#fn2">2</a></sup> The tragedy itself was never in dispute. No one argued over what physically happened on January 24, 2023.</blockquote>
+
+    <p>The timeline is clear. Lindsay Clancy sent her husband out for food and medicine. While he was gone, she took the lives of her three children before jumping from a top-floor window, an act that left her permanently paralyzed.</p>
+
+    <p>Look strictly at the physical record, though, and both sides of the trial managed to anchor themselves to entirely different versions of that same afternoon.</p>
+
+    <div class="exhibit">
+      <h3>The record, read two ways</h3>
+      <div class="evidence">
+        <div>
+          <h4>Prosecution's timeline</h4>
+          <dl>
+            <dt>4:02 pm</dt><dd>A mapping app query calculates travel time to a Plymouth restaurant: roughly forty-two minutes round trip.</dd>
+            <dt>4:53 pm</dt><dd>She instructs her husband to pick up takeout and children's medicine, confirming his departure.</dd>
+            <dt>5:15 pm</dt><dd>Alone in the house, within the calculated window.</dd>
+            <dt>5:32 pm</dt><dd>The jump from the top-floor window; emergency responders arrive within minutes.</dd>
+          </dl>
+        </div>
+        <div>
+          <h4>Defense's record</h4>
+          <dl>
+            <dt>Oct. 2022</dt><dd>Psychiatric intake notes document the onset of severe postpartum anxiety and intrusive thoughts.</dd>
+            <dt>Nov.–Dec. 2022</dt><dd>More than a dozen psychiatric medications prescribed and adjusted across sixteen weeks.</dd>
+            <dt>Jan. 2023</dt><dd>Clinical notes repeatedly record her describing herself as feeling like "a zombie," without a sense of agency.</dd>
+            <dt>After the fall</dt><dd>A complete spinal cord injury, consistent with an act with no self-preserving instinct.</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+
+    <p>The prosecution built its case on a sequence of deliberate, ordinary-seeming actions: a route calculated, an errand timed. To a strict empiricist, that sequence reads as goal-directed behavior. It is exactly what the lone dissenting juror, Michael Péguy Desronvil, pointed to when he said he voted to convict of murder based on the physical evidence and the prosecution's timeline alone.</p>
+
+    <p>The defense answered with its own set of hard, documented facts: a paper trail of psychiatric decline, a heavily adjusted cocktail of prescriptions, and the plain physical fact of her own attempted suicide moments later. To the other eleven jurors, this was not a theory. It was clinical evidence of postpartum psychosis severe enough to remove her capacity to control her actions.</p>
+
+    <h2>The McHoul problem: measuring an invisible mind</h2>
+
+    <p>This is where the philosophical friction becomes a legal impasse. Massachusetts follows the <em>McHoul</em> standard for criminal responsibility<sup><a href="#fn1">1</a></sup>, asking whether a defendant lacked the capacity to understand the wrongfulness of her conduct, or lacked the ability to conform her behavior to the law.</p>
+
+    <p>A mind has no instrument panel, and you cannot biopsy what someone was thinking two years earlier, so how does a jury measure capacity, or the absence of it, objectively? The moment the law asks twelve people to evaluate a defendant's mental state, it asks them to leave the ground of physical fact and choose between competing accounts of an interior life none of them can see.</p>
+
+    <div class="jury">
+      <h3>Eleven jurors, one dissent</h3>
+      <div class="jury-row">
+        <div class="jsym"></div><div class="jsym"></div><div class="jsym"></div><div class="jsym"></div>
+        <div class="jsym"></div><div class="jsym"></div><div class="jsym holdout"></div><div class="jsym"></div>
+        <div class="jsym"></div><div class="jsym"></div><div class="jsym"></div><div class="jsym"></div>
+      </div>
+      <p class="jury-cap"><strong>Eleven jurors</strong> voted not guilty by reason of insanity, concluding that documented postpartum psychosis and involuntary polypharmacy had destroyed her ability to conform her conduct to the law. <strong>The single dissent</strong>, shown darker above, voted to convict of murder, holding that the navigation searches and timed errand showed rational premeditation regardless of the medical record.</p>
+    </div>
+
+    <p>It leaves a system where twelve ordinary citizens are asked to draw a line on a map with no coordinates. Rely only on the physical act, and you risk convicting someone with no rational control over her own mind. Open the door to unmeasurable mental states, and you introduce a subjectivity that makes uniform justice nearly impossible.</p>
+
+    <p>What the eleven-to-one split in the Clancy trial really showed is a deeper problem. When a mind breaks down completely, the truth of what happened can be easy to establish. The truth of why can stay out of reach permanently.</p>
+  </article>
+
+  <div class="endnotes">
+    <h4>Notes</h4>
+    <ol>
+      <li id="fn1"><em>Commonwealth v. McHoul</em>, 352 Mass. 544 (1967), establishes the Massachusetts standard for lack of criminal responsibility due to mental disease or defect.</li>
+      <li id="fn2">Juror statements documented in post-declaration filings, Plymouth Superior Court, September 2026.</li>
+      <li id="fn3">The correspondence theory of truth holds that a statement's truth consists in its relation to fact, to reality as it is, independent of belief.</li>
+    </ol>
+  </div>
+</main>
+
+<script>
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    document.getElementById('bar').style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+  });
+  function toggleTheme(){
+    const root = document.documentElement;
+    const now = root.getAttribute('data-theme');
+    const next = now === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    document.getElementById('theme-btn').textContent = next === 'dark' ? 'Light mode' : 'Dark mode';
+  }
+</script>
+</body>
+</html>
